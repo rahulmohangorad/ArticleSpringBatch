@@ -4,7 +4,7 @@ Welcome to the Spring Boot Batch Project! This project is designed to demonstrat
 ### Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-1. Java 8 or higher
+1. Java 21 or higher
 2. Gradle
 3. Docker
 
