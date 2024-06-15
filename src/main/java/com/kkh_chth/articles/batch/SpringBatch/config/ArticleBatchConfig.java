@@ -2,7 +2,7 @@ package com.kkh_chth.articles.batch.SpringBatch.config;
 
 import com.kkh_chth.articles.batch.SpringBatch.bean.Article;
 import com.kkh_chth.articles.batch.SpringBatch.component.ArticleMapper;
-import com.kkh_chth.articles.batch.SpringBatch.component.CustomItemProcessor;
+import com.kkh_chth.articles.batch.SpringBatch.component.CustomDataProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -26,15 +26,13 @@ import java.util.Map;
 
 @Configuration
 @RequiredArgsConstructor
-//@EnableBatchProcessing
 public class ArticleBatchConfig {
-
 
   private final DataSource dataSource;
 
     @Bean
     public Job jobBean(JobRepository jobRepository,
-                       JobCompletionNotificationImpl listener,
+                       JobCompletionStatusImpl listener,
                        Step steps
     ) {
         return new JobBuilder("job", jobRepository)
@@ -84,14 +82,12 @@ public class ArticleBatchConfig {
 
     @Bean
     public ItemProcessor<Article, Article> dataProcessor() {
-        return new CustomItemProcessor();
+        return new CustomDataProcessor();
     }
-    ;
 
     @Bean
     public ItemWriter<Article> dataWriter() {
         return new JdbcBatchItemWriterBuilder<Article>()
-               // .sql("insert into articles(id,author,category,title)values(:Id, :title, :category, :title)")
                 .sql("UPDATE articles SET author = 'NA' WHERE category = :category")
                 .dataSource(dataSource)
                 .beanMapped()

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JobCompletionNotificationImpl implements JobExecutionListener {
+public class JobCompletionStatusImpl implements JobExecutionListener {
 
 
     @Override

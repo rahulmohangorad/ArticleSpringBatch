@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 
 @Slf4j
-public class CustomItemProcessor implements ItemProcessor<Article, Article> {
+public class CustomDataProcessor implements ItemProcessor<Article, Article> {
 
     @Override
     public Article process(Article article) throws Exception {
