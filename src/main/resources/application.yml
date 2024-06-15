@@ -1,0 +1,18 @@
+spring:
+  application:
+  name: Spring Batch Processing
+  datasource:
+    url: jdbc:postgresql://localhost:3306/mydatabase
+    username: myuser
+    password: secret
+
+  batch:
+    jdbc:
+      initialize-schema: always
+
+  #schema.sql
+  #schema-all.sql
+  sql:
+    init:
+      mode: always
+
